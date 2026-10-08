@@ -1,0 +1,243 @@
+@import "tailwindcss";
+
+/* ============================================================
+   AutoKit Egypt — نظام التصميم
+   ألوان: أسود / رمادي / أبيض + برتقالي (Accent)
+   خط Cairo (متغير) عبر next/font
+   ============================================================ */
+
+@theme {
+  --font-sans: var(--font-cairo), "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Brand — برتقالي */
+  --color-brand-50: #fff6ed;
+  --color-brand-100: #ffead4;
+  --color-brand-200: #ffd0a8;
+  --color-brand-300: #ffad71;
+  --color-brand-400: #ff8a3d;
+  --color-brand-500: #f97316;
+  --color-brand-600: #e8620a;
+  --color-brand-700: #c04c08;
+  --color-brand-800: #9a3e0d;
+  --color-brand-900: #7c340d;
+
+  /* Ink — أسود ورمادي (톤 الواجهة الرجالي العملي) */
+  --color-ink-950: #0a0a0b;
+  --color-ink-900: #141416;
+  --color-ink-800: #1c1d20;
+  --color-ink-700: #2b2d31;
+  --color-ink-600: #3f4247;
+  --color-ink-400: #71757c;
+  --color-ink-300: #9ca0a7;
+  --color-ink-200: #d7d9dd;
+  --color-ink-100: #eceef1;
+  --color-ink-50: #f6f7f8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #fff;
+    color: var(--color-ink-900);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-500);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer components {
+  /* حاوية الصفحة (Mobile First) */
+  .container-x {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 80rem;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-x {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  .section-y {
+    padding-block: 2.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-y {
+      padding-block: 4rem;
+    }
+  }
+
+  /* الأزرار */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1;
+    padding: 0.85rem 1.35rem;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .btn-primary {
+    background-color: var(--color-brand-500);
+    color: #fff;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--color-brand-600);
+  }
+
+  .btn-dark {
+    background-color: var(--color-ink-950);
+    color: #fff;
+  }
+
+  .btn-dark:hover:not(:disabled) {
+    background-color: var(--color-ink-800);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--color-ink-200);
+    background-color: #fff;
+    color: var(--color-ink-900);
+  }
+
+  .btn-outline:hover:not(:disabled) {
+    border-color: var(--color-ink-900);
+  }
+
+  .btn-ghost-light {
+    border: 1px solid rgb(255 255 255 / 0.25);
+    color: #fff;
+    background-color: transparent;
+  }
+
+  .btn-ghost-light:hover:not(:disabled) {
+    background-color: rgb(255 255 255 / 0.1);
+  }
+
+  /* بطاقات */
+  .card {
+    background-color: #fff;
+    border: 1px solid var(--color-ink-100);
+    border-radius: 0.75rem;
+  }
+
+  .card-hover:hover {
+    border-color: var(--color-ink-300);
+    box-shadow: 0 6px 20px -12px rgb(0 0 0 / 0.35);
+  }
+
+  /* وسم البيانات التجريبية */
+  .demo-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    border: 1px dashed var(--color-brand-400);
+    background-color: var(--color-brand-50);
+    color: var(--color-brand-700);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.15rem 0.6rem;
+    white-space: nowrap;
+  }
+
+  .eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-brand-600);
+    text-transform: uppercase;
+  }
+
+  .h-section {
+    font-size: 1.45rem;
+    font-weight: 800;
+    line-height: 1.35;
+    color: var(--color-ink-950);
+  }
+
+  @media (min-width: 768px) {
+    .h-section {
+      font-size: 1.85rem;
+    }
+  }
+
+  /* حقول النماذج */
+  .field {
+    width: 100%;
+    border: 1px solid var(--color-ink-200);
+    border-radius: 0.5rem;
+    background-color: #fff;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.15s ease;
+  }
+
+  .field::placeholder {
+    color: var(--color-ink-400);
+  }
+
+  .field:focus {
+    border-color: var(--color-brand-500);
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(249 115 22 / 0.15);
+  }
+
+  .field-error {
+    border-color: #dc2626;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.87rem;
+    font-weight: 700;
+    color: var(--color-ink-700);
+    margin-bottom: 0.35rem;
+  }
+}
+
+/* تقليل الحركة لمن يفضّل ذلك */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
